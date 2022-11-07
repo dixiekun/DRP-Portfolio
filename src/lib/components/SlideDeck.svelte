@@ -6,8 +6,6 @@
     const project = getContext('project-data')
     const slideImages = project.slideDeckImages
 
-    console.log(slideImages)
-
     let cur = 0;
 	
 	function changeSlide(slide) {
