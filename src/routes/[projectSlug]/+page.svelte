@@ -12,6 +12,14 @@
 
 </script>
 
+<svelte:head>
+    <title>{project.title}</title>
+    <meta name="description" content={project.description} />
+    <meta
+        name="robots"
+        content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+</svelte:head>
 
 <main data-sveltekit-prefetch
     in:fly={{y: -50, duration: 250, delay: 200, easing: quintInOut}}

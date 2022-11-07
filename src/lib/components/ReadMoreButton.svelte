@@ -17,7 +17,7 @@
 
 </script>
 
-<a class="button" href={projectSlug} on:mouseenter={hovered} on:mouseleave={mouseLeft} data-sveltekit-prefetch>Read more</a>
+<a class="button" href={projectSlug} on:mouseenter={hovered} on:mouseleave={mouseLeft} data-sveltekit-prefetch>Project Details</a>
 
 <style lang="scss">
     @import '../styles/colors.scss';

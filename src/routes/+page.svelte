@@ -19,6 +19,16 @@
 
 </script>
 
+<svelte:head>
+    <title>Dixie Raiz Pacheco | Portfolio Website</title>
+    <meta name="description" content={heroDescription} />
+    <meta
+        name="robots"
+        content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+</svelte:head>
+
+
 <Hero>
     <img class="hero-pic" slot="hero-pic" src={heroPic} alt="dixie pacheco">
     <h1 slot="hero-title">Product <span>Designer</span></h1>
