@@ -39,10 +39,11 @@
         align-items: center;
         
         img {
-            max-width: 42.375rem;
+            width: 42.375rem;
             position: relative;
             z-index: 10;
             transition: all 0.3s ease-out;
+            max-width: 100%;
 
             &.hovered {
                 box-shadow: 7px 6px 35px 5px rgba(15, 118, 211, 0.16);
@@ -88,4 +89,112 @@
         }
 
     }
+
+    // Responsive design
+    @media only screen and (max-width: 1440px) {
+        article {
+            .text-content {
+
+                &::before {
+                    width: 40rem;
+
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1380px) {
+        article {
+            .text-content {
+
+                &::before {
+                    width: 33rem;
+
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1287px) {
+        article {
+            .text-content {
+
+                &::before {
+                    top: 1.875rem;
+
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1200px) {
+        article {
+            .text-content {
+                h3 {
+                    margin-top: 1rem;
+                }
+
+                p {
+                    -webkit-line-clamp: 5;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+
+                &::before {
+                    display: none;
+
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1150px) {
+        article {
+
+            img {
+                width: 100%;
+                min-width: 32.063rem;
+            }
+
+        }
+    }
+
+    @media only screen and (max-width: 996px) {
+        article {
+
+            img {
+                min-width: 50%;
+            }
+
+            .text-content {
+                p {
+                    -webkit-line-clamp: 3;
+                }
+            }
+
+        }
+    }
+
+    @media only screen and (max-width: 860px) {
+        article {
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            img {
+                min-width: 100%;
+            }
+
+            .text-content {
+                max-width: 100%;
+
+                p {
+                    -webkit-line-clamp: 4;
+                }
+            }
+
+        }
+    }
+
+
 </style>

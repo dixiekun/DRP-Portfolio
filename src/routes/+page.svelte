@@ -42,19 +42,21 @@
 </Hero>
 <main 
     in:fly={{y: -50, duration: 250, delay: 200, easing: quintInOut}}
-    class='container'
 >
-    <div class="heading">
-        <h2>Projects</h2>
-        <p class="sub-heading">Check out the projects I’ve worked in the past.</p>
+    <div class="container project-wrapper">
+        <div class="heading">
+            <h2>Projects</h2>
+            <p class="sub-heading">Check out the projects I’ve worked in the past.</p>
+        </div>
+        <Projects/>
     </div>
-    <Projects/>
+
 </main>
 
 <style lang="scss">
     @import '../lib/styles/colors.scss';
 
-    main {
+    .project-wrapper {
         background-color: white;
         padding: 4rem 3.375rem;
         border-radius: 1rem;
@@ -63,6 +65,7 @@
         display: grid;
         gap: 4rem;
         box-sizing: border-box;
+        overflow: hidden;
 
         h2 {
             font-size: 32px;
@@ -87,28 +90,44 @@
         }
     }
 
-    h1 {
-        margin-left: 1.75rem;
-
-        span {
-            font-weight: 400;
-            color: $primary-color;
-        }
-    }
-
-    p {
-        font-size: 1.25rem;
-        margin-left: 1.75rem;
-    }
-
     img.hero-pic {
-        max-width: 28.625rem;
+        width: 28.625rem;
+        max-width: 100%;
     }
 
     img {
         max-width: 100%;
     }
 
+
+    // Responsive design
+    @media only screen and (max-width: 860px) {
+        .project-wrapper {
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+
+                
+                &::before {
+                    width: 3rem;
+                    height: 5px;
+                    top: -6px;
+
+                }
+            }
+        }
+
+        img.hero-pic {
+            max-width: 20rem;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        .project-wrapper {
+            padding: 3rem 2rem;
+        }
+        
+    }
 
 
 </style>

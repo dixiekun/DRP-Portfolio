@@ -32,7 +32,7 @@
         color: $text-color;
         background: #FFFFFF;
         box-shadow: 2px 4px 4px #E3E7EB;
-        border: none;
+        border: 1px solid #fafafa;
         border-radius: 3px;
         padding: 0.625rem 1.25rem;
         transition: all 0.2s ease;
@@ -43,6 +43,7 @@
         &:hover {
             background: $primary-color;
             color: #FAFAFA;
+            border: 1px solid $primary-color;
         }
     }
 </style>

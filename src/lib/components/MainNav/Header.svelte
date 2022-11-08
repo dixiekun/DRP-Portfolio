@@ -60,4 +60,19 @@ afterNavigate(() => {
                 }
         }
 
+        // Responsive Design
+        @media only screen and (max-width: 1440px) {
+                .main-navigation {
+
+                        .nav-bar-container {
+
+                                &.split {
+                                        max-width: 84%;
+
+                                }
+                        }
+        }
+        }
+
+
 </style>

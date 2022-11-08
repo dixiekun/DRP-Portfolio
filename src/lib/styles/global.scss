@@ -9,6 +9,12 @@ body {
     margin: 0 auto;
 }
 
+main, section {
+    display: block;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
 a {
     color: $primary-color;
     text-decoration: none;
