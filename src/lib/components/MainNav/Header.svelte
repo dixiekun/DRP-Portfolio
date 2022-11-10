@@ -6,38 +6,68 @@ import {page} from '$app/stores'
 import {afterNavigate} from '$app/navigation'
 import {fly, scale} from 'svelte/transition'
 
+
 let projectPage
+let fullpagePresentation
 
 afterNavigate(() => {
         projectPage = $page.params.projectSlug
-})
 
+        if ($page.data.project) {
+                fullpagePresentation = $page.data.project[0].isFullPagePresentation
+        }
+
+})
 
 </script>
 
-<header class="main-navigation">
-        {#if projectPage}
+
+        {#if projectPage && (fullpagePresentation === false) }
+        <header class="main-navigation">
                 <div in:scale="{{duration: 300}}" class="container nav-bar-container split">
                         <a href="/" data-sveltekit-prefetch>
                                 <Logo logo={drpLogo} logoName="Dixie Raiz Pacheco logo" />
                         </a>
                         <Nav/>
                 </div>
+        </header>
+        {:else if projectPage && fullpagePresentation }
+        <header class="main-navigation fullpage-true">
+                <div in:scale="{{duration: 300}}" class="container nav-bar-container split">
+                        <a href="/" data-sveltekit-prefetch>
+                                <Logo logo={drpLogo} logoName="Dixie Raiz Pacheco logo" />
+                        </a>
+                        <Nav/>
+                </div>
+        </header>
         {:else}
+        <header class="main-navigation">
                 <div in:fly="{{duration: 1000}}" class="container nav-bar-container">
                         <a href="/" data-sveltekit-prefetch>
                                 <Logo logo={drpLogo} logoName="Dixie Raiz Pacheco logo" />
                         </a>
                         <Nav/>
                 </div>
+        </header>
         {/if}
 
-</header>
 
 <style lang="scss">
 
         .main-navigation {
                 padding-top: 1.25rem;
+
+                &.fullpage-true {
+                        position: absolute;
+                        inset: 0;
+                        z-index: 99;
+                        background-color: rgba(255, 255, 255, 0.647);
+                        backdrop-filter: blur(7px);
+                        height: fit-content;
+                        padding-bottom: 1.25rem;
+                        border-bottom: 1px solid #fafafa;
+                        box-shadow: 0 8px 20px #31354059;
+                }
 
                 .nav-bar-container {
                         display: grid;
@@ -55,6 +85,8 @@ afterNavigate(() => {
                                 a {
                                         height: 100%;
                                 }
+
+
 
                         }
                 }

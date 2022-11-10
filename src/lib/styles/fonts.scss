@@ -70,6 +70,18 @@
     font-style: normal;
 }
 
+:root {
+    --step--3: clamp(0.58rem, calc(0.58rem + 0.00vw), 0.58rem);
+    --step--2: clamp(0.69rem, calc(0.69rem + 0.03vw), 0.72rem);
+    --step--1: clamp(0.83rem, calc(0.82rem + 0.07vw), 0.90rem);
+    --step-0: clamp(1.00rem, calc(0.98rem + 0.13vw), 1.13rem);
+    --step-1: clamp(1.20rem, calc(1.16rem + 0.21vw), 1.41rem);
+    --step-2: clamp(1.44rem, calc(1.38rem + 0.32vw), 1.76rem);
+    --step-3: clamp(1.73rem, calc(1.63rem + 0.47vw), 2.20rem);
+    --step-4: clamp(2.07rem, calc(1.94rem + 0.67vw), 2.75rem);
+    --step-5: clamp(2.49rem, calc(2.30rem + 0.95vw), 3.43rem);
+    --step-6: clamp(2.99rem, calc(2.73rem + 1.31vw), 4.29rem);
+  }
 
 .hero {
     h1 {
@@ -113,18 +125,18 @@ h1, h2, h3, h4, h5 {
 
 h1 {
   margin-top: 0;
-  font-size: 4.209rem;
+  font-size: var(--step-6);
 }
 
-h2 {font-size: 3.157rem;}
+h2 {font-size: var(--step-4);}
 
-h3 {font-size: 2.369rem;}
+h3 {font-size: var(--step-3);}
 
-h4 {font-size: 1.777rem;}
+h4 {font-size: var(--step-2);}
 
-h5 {font-size: 1.333rem;}
+h5 {font-size: var(--step-1);}
 
-small, .text_small {font-size: 0.75rem;}
+small, .text_small {font-size: var(--step--1);}
 
 
 // Responsive design

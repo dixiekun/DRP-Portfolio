@@ -26,15 +26,6 @@ export const load = async () => {
             url
             fileName
           }
-          likes
-          publishedAt
-          publishedBy {
-            id
-          }
-          tools
-          updatedAt
-          productionLink
-          
         }
       }
     `

@@ -1,19 +1,14 @@
-@import './colors.scss', './fonts.scss';
+@import './colors.scss', './fonts.scss', './spacing.scss';
 
 body {
     background-color: #FAFAFA;
 }
 
 .container {
-    max-width: 1400px;
-    margin: 0 auto;
+    width: min(90%, 87.5rem);
+    margin-inline: auto;
 }
 
-main, section {
-    display: block;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
 
 a {
     color: $primary-color;

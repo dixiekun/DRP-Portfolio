@@ -27,6 +27,7 @@ export const load = async ({params}) => {
             url
             fileName
           }
+          isFullPagePresentation
           likes
           publishedAt
           publishedBy {
