@@ -1,9 +1,8 @@
 <script>
-    import {getContext} from 'svelte'
     import {quintInOut} from 'svelte/easing'
     import Slide from './Slide.svelte';
 
-    const project = getContext('project-data')
+    export let project
     const slideImages = project.slideDeckImages
 
     let cur = 0;
@@ -42,7 +41,7 @@
 </script>
 <svelte:head>
     {#each slideImages as image}
-      <link rel="preload" as="image" href={image.url} />
+      <link rel="prefetch" as="image" href={image.url} />
     {/each}
 </svelte:head>
 <svelte:window on:keyup={handleShortcut} />
@@ -66,11 +65,13 @@
                 <div class="controls">
                     <button on:click="{()=>prev()}">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <title>Previous Slide</title>
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>
                     </button>
                     <button on:click="{()=>next()}">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <title>Next Slide</title>
                             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                         </svg>
                     </button>

@@ -2,15 +2,29 @@
     import heroSwosh from '../images/swosh.svg'
     import {page} from '$app/stores'
     import {afterNavigate} from '$app/navigation'
+    import {onMount} from 'svelte'
+    import Typewriter from 'svelte-typewriter'
 
+    
     let projectPage
     let fullpagePresentation
+
+    if ($page.data.project) {
+                fullpagePresentation = $page.data.project.isFullPagePresentation
+        }
+
+    onMount(() => {
+
+        if ($page.data.project) {
+                fullpagePresentation = $page.data.project.isFullPagePresentation
+        }
+    })
 
     afterNavigate(() => {
             projectPage = $page.params.projectSlug
 
             if ($page.data.project) {
-                    fullpagePresentation = $page.data.project[0].isFullPagePresentation
+                    fullpagePresentation = $page.data.project.isFullPagePresentation
             }
     })
 </script>
@@ -27,7 +41,7 @@
         <div class="container">
             <slot name="hero-pic"/>
             <div class="text-content">
-                <slot name="hero-title"><h1>Product Developer</h1></slot>
+                <Typewriter mode="loop" interval="60" --cursor-color="var(--primary-color)" --cursor-width="2px"><slot name="hero-title"><h1>Product Developer</h1></slot></Typewriter>
                 {#if projectPage}
                     <div class="hide-me"></div>
                 {:else}

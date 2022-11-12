@@ -26,6 +26,7 @@ export const load = async () => {
             url
             fileName
           }
+          publishedAt
         }
       }
     `

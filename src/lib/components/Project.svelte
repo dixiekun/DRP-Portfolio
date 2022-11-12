@@ -23,10 +23,10 @@
 
 <article>
     <img class:hovered src={thumbnail} alt={`${title} thumbnail`} >
-    <div class:hovered  class="text-content">
+    <div class:hovered  class="text-content" on:mouseenter={handleHover} on:mouseleave={handleMouseLeave}>
         <h3>{title}</h3>
         <p>{description}</p>
-        <ReadMoreButton projectSlug={projectSlug} on:hovered={handleHover} on:mouse-left={handleMouseLeave} />
+        <ReadMoreButton hovered={hovered} projectSlug={projectSlug} />
     </div>
 </article>
 

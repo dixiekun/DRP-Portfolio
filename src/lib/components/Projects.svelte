@@ -1,8 +1,8 @@
 <script>
-    import {getContext} from 'svelte'
     import Project from './Project.svelte';
     
-    const projects = getContext('projects-data')
+    export let projects
+
 </script>
 
 {#each projects as project }

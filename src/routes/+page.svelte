@@ -5,12 +5,15 @@
     import heroPic from '../lib/images/hero-profile-pic.png'
     import {fly} from 'svelte/transition'
     import {quintInOut} from 'svelte/easing'
+    import projectsData from '$lib/stores/projectsDataStore.js';
 
 
     export let data
     const {projects} = data 
     const heroDescription = `A licensed chemist who pursued the path of UX design, full-stack web development, and business strategy. A creative unicorn that wants to do it all.`
     const heroDescriptionPS = `Working remotely since 2010 (12+ yrs) and have acquired many valuable skills in various fields.`
+
+    projectsData.set(projects)
 
     setContext('projects-data', projects)
 
@@ -31,7 +34,11 @@
 
 <Hero>
     <img class="hero-pic" slot="hero-pic" src={heroPic} alt="dixie pacheco">
-    <h1 slot="hero-title">Product <span>Designer</span></h1>
+    <h1 slot="hero-title">Product 
+        <span>Designer</span>
+        <span>Developer</span>
+        <span>Strategist</span>
+    </h1>
     <p slot="hero-description">
         {heroDescription}
         <br>
@@ -48,7 +55,7 @@
             <h2>Projects</h2>
             <p class="sub-heading">Check out the projects I’ve worked in the past.</p>
         </div>
-        <Projects/>
+        <Projects projects={projects}/>
     </div>
 
 </main>

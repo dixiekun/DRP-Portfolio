@@ -43,9 +43,11 @@ export const load = async ({params}) => {
 
     const { projects } = await hygraph.request(QUERY);
     
-    const project = projects.filter((entry) => entry.slug === params.projectSlug)
-    
+    const projectEntry = projects.filter((entry) => entry.slug === params.projectSlug)
+    const project = projectEntry[0]
+
     return {
+        projects,
         project
     };
 

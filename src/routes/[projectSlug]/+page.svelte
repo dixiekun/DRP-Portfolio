@@ -2,16 +2,13 @@
     import {fly, slide} from 'svelte/transition'
     import {quintInOut} from 'svelte/easing'
     import SlideDeck from '../../lib/components/SlideDeck.svelte'
-    import { setContext } from 'svelte';
   import FullPagePresentation from '../../lib/components/FullPagePresentation.svelte';
   import Hero from '../../lib/components/Hero.svelte';
-
+  import ProjectNavigator from './ProjectNavigator.svelte';
 
     export let data
-    const project = data.project[0]
-    const slideImages = project.slideDeckImages
-
-    setContext('project-data', project)
+    $: ({projects, project} = data)
+ 
 
 </script>
 
@@ -31,16 +28,17 @@
 
 {#if project.isFullPagePresentation }
     <Hero>
-        <img class="hero-bg" slot="hero-bg" src={slideImages[0].url} alt={`${project.title} thumbnail`}>
+        <img class="hero-bg" slot="hero-bg" src={project.slideDeckImages[0].url} alt={`${project.title} thumbnail`}>
         <h1 slot="hero-title">{project.title}</h1>
         <p slot="hero-description">
             {project.description}
         </p>
     </Hero>
-    <FullPagePresentation/>
+    <FullPagePresentation project={project}/>
 {:else}
-    <SlideDeck/>
+    <SlideDeck project={project}/>
 {/if}
+<ProjectNavigator projectPage={project} projectsList={projects} />
 </main>
 
 

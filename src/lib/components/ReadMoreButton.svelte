@@ -1,23 +1,9 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-
-
-    const dispatch = createEventDispatcher()
-
-    function hovered() {
-        dispatch('hovered')
-    }
-
-
-    function mouseLeft() {
-        dispatch('mouse-left')
-    }
-
     export let projectSlug
-
+    export let hovered
 </script>
 
-<a class="button" href={projectSlug} on:mouseenter={hovered} on:mouseleave={mouseLeft} data-sveltekit-prefetch>Project Details</a>
+<a class="button" class:hovered={hovered} href={projectSlug} data-sveltekit-prefetch>Project Details</a>
 
 <style lang="scss">
     @import '../styles/colors.scss';
@@ -40,7 +26,7 @@
 
 
 
-        &:hover {
+        &:hover, &.hovered {
             background: $primary-color;
             color: #FAFAFA;
             border: 1px solid $primary-color;

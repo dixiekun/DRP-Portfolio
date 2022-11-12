@@ -3,54 +3,53 @@ import Logo from "./Logo.svelte";
 import Nav from "./Nav.svelte";
 import drpLogo from '../../images/Dixie-Raiz-Pacheco-Logo.svg'
 import {page} from '$app/stores'
+import { onMount } from 'svelte';
 import {afterNavigate} from '$app/navigation'
 import {fly, scale} from 'svelte/transition'
 
 
-let projectPage
-let fullpagePresentation
+$: projectPage = {
+        slug : $page.params.projectSlug,
+        isFullPagePresentation: false,
+}
 
-afterNavigate(() => {
-        projectPage = $page.params.projectSlug
+onMount(() => {
 
-        if ($page.data.project) {
-                fullpagePresentation = $page.data.project[0].isFullPagePresentation
+        if (($page.data.projects && $page.params.projectSlug) !==undefined) {
+                const pageData = $page.data.projects.filter((project) => project.slug === $page.params.projectSlug ) 
+                projectPage.slug = pageData[0].slug
+                projectPage.isFullPagePresentation = pageData[0].isFullPagePresentation
         }
 
+        
+})
+
+afterNavigate(() => {
+        
+        if (($page.data.projects && $page.params.projectSlug) !==undefined) {
+                const pageData = $page.data.projects.filter((project) => project.slug === $page.params.projectSlug ) 
+                projectPage.slug = pageData[0].slug
+                projectPage.isFullPagePresentation = pageData[0].isFullPagePresentation
+        } else {
+                projectPage.slug = undefined
+                projectPage.isFullPagePresentation = false
+        }
+ 
 })
 
 </script>
-
-
-        {#if projectPage && (fullpagePresentation === false) }
-        <header class="main-navigation">
-                <div in:scale="{{duration: 300}}" class="container nav-bar-container split">
+{#key projectPage.isFullPagePresentation}
+        <header class="main-navigation" class:fullpage-true={projectPage.isFullPagePresentation}>
+                {#key projectPage.slug}
+                <div in:scale="{{duration: 300}}" class="container nav-bar-container" class:split={projectPage.slug !== undefined}>
                         <a href="/" data-sveltekit-prefetch>
                                 <Logo logo={drpLogo} logoName="Dixie Raiz Pacheco logo" />
                         </a>
                         <Nav/>
                 </div>
+                {/key}
         </header>
-        {:else if projectPage && fullpagePresentation }
-        <header class="main-navigation fullpage-true">
-                <div in:scale="{{duration: 300}}" class="container nav-bar-container split">
-                        <a href="/" data-sveltekit-prefetch>
-                                <Logo logo={drpLogo} logoName="Dixie Raiz Pacheco logo" />
-                        </a>
-                        <Nav/>
-                </div>
-        </header>
-        {:else}
-        <header class="main-navigation">
-                <div in:fly="{{duration: 1000}}" class="container nav-bar-container">
-                        <a href="/" data-sveltekit-prefetch>
-                                <Logo logo={drpLogo} logoName="Dixie Raiz Pacheco logo" />
-                        </a>
-                        <Nav/>
-                </div>
-        </header>
-        {/if}
-
+{/key}
 
 <style lang="scss">
 
@@ -64,9 +63,17 @@ afterNavigate(() => {
                         background-color: rgba(255, 255, 255, 0.647);
                         backdrop-filter: blur(7px);
                         height: fit-content;
-                        padding-bottom: 1.25rem;
+                        padding-bottom: 0.5rem;
                         border-bottom: 1px solid #fafafa;
                         box-shadow: 0 8px 20px #31354059;
+                        padding-top: 0.5rem;
+
+                        .nav-bar-container {
+
+                                &.split {
+                                        height: 4rem;
+                                }
+                        }
                 }
 
                 .nav-bar-container {
