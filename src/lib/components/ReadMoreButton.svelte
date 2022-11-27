@@ -1,6 +1,10 @@
 <script>
     export let projectSlug
     export let hovered
+
+
+    
+
 </script>
 
 <a class="button" class:hovered={hovered} href={projectSlug} data-sveltekit-prefetch>Project Details</a>

@@ -1,12 +1,8 @@
 <script>
+    import * as prismicH from '@prismicio/helpers';
     import ReadMoreButton from "./ReadMoreButton.svelte";
 
-
-    export let title
-    export let description
-    export let thumbnail
-
-    export let projectSlug
+    export let project
 
     let hovered = false
 
@@ -22,13 +18,18 @@
 </script>
 
 <article>
-    <img class:hovered src={thumbnail} alt={`${title} thumbnail`} >
+    <img class:hovered src={project.data.body.filter((slice) =>  slice.slice_type === 'hero')[0].primary.hero_image.url} 
+    alt={`${project.data.project_title} thumbnail`} >
     <div class:hovered  class="text-content" on:mouseenter={handleHover} on:mouseleave={handleMouseLeave}>
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <ReadMoreButton hovered={hovered} projectSlug={projectSlug} />
+        <h3>{@html prismicH.asText(project.data.project_title)}</h3>
+        <p>{@html prismicH.asText(project.data.body.filter((slice) =>  slice.slice_type === 'hero')[0].primary.hero_description)}</p>
+        <ReadMoreButton hovered={hovered} projectSlug={project.uid} />
     </div>
 </article>
+
+
+
+
 
 <style lang="scss">
     @import '../styles/colors.scss';
