@@ -1,11 +1,12 @@
-<script>  
+<script> 
+    import * as prismicH from '@prismicio/helpers';
     export let slice;
     
 </script>
 
 <section class="Tools">
     <div class="container">
-        <h2>Tools Used</h2>
+        <h2>{prismicH.asText(slice.primary.title)}</h2>
         <ul>
             {#each slice.items as tool }
                 <li>{tool.tool_options}</li>

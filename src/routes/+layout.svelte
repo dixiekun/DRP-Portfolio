@@ -5,7 +5,7 @@
   import Loader from '../lib/components/Loader.svelte';
   import { onMount } from 'svelte';
   import {navigating} from '$app/stores'
-  import {loading} from '$lib/utils/loading'
+  import {loading} from '$lib/stores/loading'
 
 
   let isPageLoaded = false

@@ -59,8 +59,8 @@
     <section class="fullpage-presentation" in:fly={{y: -50, duration: 250, delay: 200, easing: quintInOut}}>
         <div class="container">
             <article>
-                {#each slideImages as slideImage}
-                    <img src={cleanImage(slideImage.slide_image.url)} alt={slideImage.slide_image.alt}>
+                {#each slideImages as slideImage, i}
+                    <img id={`image number ${[i+1]}`} src={cleanImage(slideImage.slide_image.url)} alt={slideImage.slide_image.alt}>
                 {/each}
             </article>
         </div>
@@ -116,6 +116,14 @@
 
 <style lang="scss">
     @import '../../lib/styles/colors.scss';
+
+    section.fullpage-presentation {
+        padding-top: var(--space-xs);
+    }
+    article {
+        display: grid;
+        place-items: center;
+    }
 
     .extra-outer-wrapper {
 		width: 84%;
