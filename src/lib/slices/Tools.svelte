@@ -19,6 +19,7 @@
 <style>
     ul {
         display: flex;
+        flex-wrap: wrap;
         gap: var(--space-xs);
         margin: 0;
         padding: 0;

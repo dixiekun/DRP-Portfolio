@@ -6,7 +6,9 @@ import {page} from '$app/stores'
 import {scale} from 'svelte/transition'
 
 </script>
-{#key $page.data.document.data.page_layout}
+
+{#if $page.data.document.data.page_layout !== 'Contact-page'}
+        {#key $page.data.document.data.page_layout}
         <header class="main-navigation" class:fullpage-true={$page.data.document.data.page_layout === 'Full-page'}>
                 {#key $page.data.document.uid}
                         <div in:scale="{{duration: 300}}" class="container nav-bar-container" class:split={$page.data.document.uid !== 'homepage'}>
@@ -17,7 +19,9 @@ import {scale} from 'svelte/transition'
                         </div>
                 {/key}
         </header>
-{/key}
+        {/key}
+{/if}
+
 
 <style>
 

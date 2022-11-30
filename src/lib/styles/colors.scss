@@ -2,6 +2,13 @@ $primary-color: #0F76D3;
 $text-color: #3C4858;
 $dixie-black: #313540;
 
+
+
 :root {
-    --primary-color: #0F76D3;
+    --primary-color: hsl(208, 87%, 44%);
+    --primary-color-light: hsl(208, 87%, 54%);
+    --text-color: #3C4858;
+    --text-color-light: #778699;
+    --dixie-black: #313540;
+    --dixie-black-darker: #2A2D38;
 }
