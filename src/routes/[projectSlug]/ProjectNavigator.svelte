@@ -1,11 +1,14 @@
 <script>
 
-export let projectsList
+export let projectsData
 export let projectPage
+
+$: projectsList = projectsData.sort((a, b) => (a.data.date_published > b.data.date_published ? -1 : 1 ))
 
 $: currentPage = projectPage.uid
 
 $: index = projectsList.findIndex((project) => project.uid === currentPage)
+$: console.log("🚀 ~ file: ProjectNavigator.svelte:13 ~ index", index)
 
 $: (getPrevAndNext = () => {
 
@@ -66,6 +69,11 @@ $: ({prevIndex, nextIndex } = getPrevAndNext())
 <style lang="scss">
     section.project-navigator {
         padding: 2rem;
+
+        .wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
 
         .button-navigator {
                 &.next {

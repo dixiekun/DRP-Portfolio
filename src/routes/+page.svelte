@@ -8,8 +8,7 @@
   export let data
   
   $: ({document} = data)
-  
-  
+
 </script>
 <svelte:head>
     <title>{prismicH.asText(document?.data?.seo_title)}</title>

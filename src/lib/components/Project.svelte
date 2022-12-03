@@ -45,6 +45,8 @@
             z-index: 10;
             transition: all 0.3s ease-out;
             max-width: 100%;
+            max-height: 27.5rem;
+            overflow: hidden;
 
             &.hovered {
                 box-shadow: 7px 6px 35px 5px rgba(15, 118, 211, 0.16);

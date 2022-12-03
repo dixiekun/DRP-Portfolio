@@ -27,7 +27,7 @@
     in:fly={{y: -50, duration: 250, delay: 200, easing: quintInOut}}
     >
     <SliceZone slices={document?.data?.body} {components} {dev} />
-    <ProjectNavigator projectPage={document} projectsList={projects} />
+    <ProjectNavigator projectPage={document} projectsData={projects} />
 </main>
 
 

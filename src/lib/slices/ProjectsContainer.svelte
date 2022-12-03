@@ -8,8 +8,8 @@
       
     export let slice;
 
-    $: projects = $page.data.projects
-
+    $: projects = $page.data.projects.sort((a, b) => (a.data.date_published > b.data.date_published ? -1 : 1 ))
+  
 </script>
 <section class="projects" in:fly={{y: -50, duration: 250, delay: 200, easing: quintInOut}}>
     <div class="container project-wrapper">
