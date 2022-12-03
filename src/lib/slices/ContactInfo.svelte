@@ -6,6 +6,7 @@
     import ThankYou from '../../routes/contact/ThankYou.svelte';
     import { z } from 'zod'
     import Loader from '$lib/components/Loader.svelte';
+    import {barProgress} from '$lib/stores/loading';
 
     export let slice;
     
@@ -19,7 +20,6 @@
 
     //Transition after submit
     let loadingAnimation = false
-    let loadingBar
 
     // error handling client
     let titleError= false
@@ -92,8 +92,8 @@
 
     function onFormSubmit() {
         loadingAnimation = true
-        loadingBar = 1
-        
+        $barProgress = 1
+
         const manualData = {
             inquiry_title: queryTitleValue,
             email: email,
@@ -109,8 +109,11 @@
             const contactApiResponse = await response.json()
 
             submitSuccess = contactApiResponse.message
-            
+  
             loadingAnimation = false
+        
+
+            
 
         }
 
@@ -206,7 +209,7 @@
     </a>
 </section>
 {#if loadingAnimation}
-  <Loader progress={loadingBar}/>
+  <Loader/>
 {/if}
 
 <style lang="scss">

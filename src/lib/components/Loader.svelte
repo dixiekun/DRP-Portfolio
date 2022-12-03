@@ -3,11 +3,10 @@
     import { onMount } from 'svelte';
     import { tweened } from 'svelte/motion';
     import { cubicOut } from 'svelte/easing';
-    import {loading} from '$lib/stores/loading';
+    import {loading, barProgress} from '$lib/stores/loading';
     import {navigating} from '$app/stores'
 
     $: $loading = !!$navigating
-    export let barProgress
 
 
     const progress = tweened(0, {
@@ -22,8 +21,8 @@
     });
 
 
-    $: if (barProgress > 0) {
-        progress.set(barProgress);
+    $: if ($barProgress > 0) {
+        progress.set($barProgress);
     }
 
     
