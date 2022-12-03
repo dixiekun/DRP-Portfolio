@@ -8,7 +8,6 @@
 
     export let data
     const {document} = data
-    console.log("🚀 ~ file: +page.svelte ~ line 4 ~ data", data)
 </script>
 
 <svelte:head>

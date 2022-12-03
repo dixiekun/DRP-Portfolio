@@ -19,9 +19,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@notionhq/client": "^2.2.2",
 		"@prismicio/client": "^6.7.1",
 		"@prismicio/helpers": "^2.3.6",
 		"@prismicio/svelte": "^0.0.4",
+		"nodemailer": "^6.8.0",
+		"nodemailer-mailgun-transport": "^2.1.5",
 		"normalize.css": "^8.0.1",
 		"zod": "^3.19.1"
 	}

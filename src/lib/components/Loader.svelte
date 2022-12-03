@@ -7,6 +7,8 @@
     import {navigating} from '$app/stores'
 
     $: $loading = !!$navigating
+    export let barProgress
+
 
     const progress = tweened(0, {
         duration: 200,
@@ -19,6 +21,10 @@
         }
     });
 
+
+    $: if (barProgress > 0) {
+        progress.set(barProgress);
+    }
 
     
 

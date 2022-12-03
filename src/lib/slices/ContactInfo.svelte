@@ -5,7 +5,7 @@
     import {quintInOut} from 'svelte/easing'
     import ThankYou from '../../routes/contact/ThankYou.svelte';
     import { z } from 'zod'
-
+    import Loader from '$lib/components/Loader.svelte';
 
     export let slice;
     
@@ -16,6 +16,10 @@
     let inquiryDetailsValue
     let email
     let submitSuccess
+
+    //Transition after submit
+    let loadingAnimation = false
+    let loadingBar
 
     // error handling client
     let titleError= false
@@ -82,27 +86,32 @@
         if (parseDetails.success) {
             detailsError = false
         }
-        queryTitleInput=true 
+        
+
     }
 
-    function onFormSubmit(e) {
-        const formData = new FormData(e.target);
+    function onFormSubmit() {
+        loadingAnimation = true
+        loadingBar = 1
         
-        const data = {};
-        for (let field of formData) {
-        const [key, value] = field;
-        data[key] = value;
+        const manualData = {
+            inquiry_title: queryTitleValue,
+            email: email,
+            inquiry_details: inquiryDetailsValue
         }
 
         async function submitData() {
             const response = await fetch('/contact/api', {
                 method: 'POST',
-                body: JSON.stringify(data),
+                body: JSON.stringify(manualData),
             })
 
             const contactApiResponse = await response.json()
 
             submitSuccess = contactApiResponse.message
+            
+            loadingAnimation = false
+
         }
 
         submitData()
@@ -196,6 +205,9 @@
         </svg>
     </a>
 </section>
+{#if loadingAnimation}
+  <Loader progress={loadingBar}/>
+{/if}
 
 <style lang="scss">
     .contact-ui {
