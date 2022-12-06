@@ -59,5 +59,11 @@
         font-size: 1rem;
         margin: 0;
     }
+
+    @media only screen and (max-width: 600px) {
+        .project-wrapper {
+            padding: 3rem 2rem;
+        }
+    }
 </style>
 
