@@ -5,6 +5,7 @@
 
     export let project
 
+
     let hovered = false
 
     function handleHover(event) {
@@ -19,8 +20,12 @@
 </script>
 
 <article>
-    <img class:hovered src={`${cleanImage(project.data.body.filter((slice) =>  slice.slice_type === 'hero')[0].primary.hero_image.url)}?fit=clamp&w=678&h=420`} 
-    alt={`${project.data.project_title} thumbnail`} >
+    <div  class="img-container" class:hovered >
+        <img
+            src={`${cleanImage(project.data.body.filter((slice) =>  slice.slice_type === 'hero')[0].primary.hero_image.url)}?fit=clamp&w=678&h=420`} 
+            alt={`${prismicH.asText(project.data.project_title)} thumbnail`} 
+        >
+    </div>
     <div class:hovered  class="text-content" on:mouseenter={handleHover} on:mouseleave={handleMouseLeave}>
         <h3>{@html prismicH.asText(project.data.project_title)}</h3>
         <p>{@html prismicH.asText(project.data.body.filter((slice) =>  slice.slice_type === 'hero')[0].primary.hero_description)}</p>
@@ -39,20 +44,28 @@
         display: flex;
         gap: 3rem;
         align-items: center;
-        
-        img {
+
+        .img-container {
             width: 42.375rem;
             position: relative;
             z-index: 10;
             transition: all 0.3s ease-out;
             max-width: 100%;
-            height: 26.25rem;
+            height: auto;
+            max-height: 26.25rem;
             overflow: hidden;
 
             &.hovered {
                 box-shadow: 7px 6px 35px 5px rgba(15, 118, 211, 0.16);
                 transform: scale(1.01);
             }
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease-out;
         }
 
         h3 {
@@ -110,6 +123,7 @@
     @media only screen and (max-width: 1380px) {
         article {
             .text-content {
+                width: 100%;
 
                 &::before {
                     width: 33rem;
@@ -184,6 +198,11 @@
         article {
             flex-wrap: wrap;
             gap: 1rem;
+           
+
+            .img-container {
+                width: 100%;
+            }
 
             img {
                 min-width: 100%;

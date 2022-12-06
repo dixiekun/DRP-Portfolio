@@ -8,7 +8,6 @@ $: projectsList = projectsData.sort((a, b) => (a.data.date_published > b.data.da
 $: currentPage = projectPage.uid
 
 $: index = projectsList.findIndex((project) => project.uid === currentPage)
-$: console.log("🚀 ~ file: ProjectNavigator.svelte:13 ~ index", index)
 
 $: (getPrevAndNext = () => {
 
