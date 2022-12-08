@@ -227,7 +227,7 @@
     }
 
     .screen {
-        width: 31.25rem;
+        max-width: 31.25rem;
         display: flex;
         flex-direction: column;
         align-items: end;
@@ -342,7 +342,7 @@
         width: 44px;
         height: 44px;
         top: 16px;
-        right: 2rem;
+        right: min(2rem, 2%);
         background: #FFFFFF;
         box-shadow: 0px 3px 10px rgba(37, 82, 160, 0.1);
         border-radius: 6.25rem;
