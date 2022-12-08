@@ -8,6 +8,7 @@
     
     export let slice 
 
+    let scrollY
     
   
     $: hero_avatar = prismicH.asImageSrc(slice.primary.hero_image, {
@@ -29,7 +30,7 @@
     
 
 </script>
-
+<svelte:window bind:scrollY={scrollY} />
 
 {#key $page.data.document.data.page_layout}
     {#if $page.data.document.data.page_layout !== 'Slide-deck'}
@@ -62,7 +63,7 @@
             </div>
         </div>
         {#if slice.primary.hero_type === "Image on the background"}
-            <img class="hero-bg" src={hero_bg} alt={slice.primary.hero_image.alt}>
+            <img style:transform={`translate3d(0, ${scrollY*0.1}%, 0)`} class="hero-bg" src={hero_bg} alt={slice.primary.hero_image.alt}>
         {/if}
     </section>
     {/if}
@@ -74,6 +75,9 @@
 <style lang="scss">
     .hero {
         position: relative;
+        overflow: hidden;
+        transition: transform 0.4s ease;
+        perspective: 100px;
 
         img.hero-pic {
             width: 28.625rem;
@@ -87,6 +91,8 @@
             width: 100%;
             inset: 0;
             z-index: -1;
+            will-change: transform;
+            
         }
 
         .container {

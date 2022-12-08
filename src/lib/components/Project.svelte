@@ -2,6 +2,8 @@
     import * as prismicH from '@prismicio/helpers';
     import ReadMoreButton from "./ReadMoreButton.svelte";
     import {cleanImage} from '$lib/utils/prismicImageStrip'
+ 
+
 
     export let project
 
@@ -17,13 +19,15 @@
     }
 
 
+
 </script>
 
 <article>
     <div  class="img-container" class:hovered >
         <img
             src={`${cleanImage(project.data.body.filter((slice) =>  slice.slice_type === 'hero')[0].primary.hero_image.url)}?fit=clamp&w=678&h=420`} 
-            alt={`${prismicH.asText(project.data.project_title)} thumbnail`} 
+            alt={`${prismicH.asText(project.data.project_title)} thumbnail`}
+            data-rate="2" 
         >
     </div>
     <div class:hovered  class="text-content" on:mouseenter={handleHover} on:mouseleave={handleMouseLeave}>

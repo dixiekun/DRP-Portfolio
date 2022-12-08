@@ -3,9 +3,10 @@
     import { dev } from '$app/environment';
     import * as prismicH from '@prismicio/helpers';
     import * as components from '$lib/slices';
+    
 
+    export let data
 
-  export let data
   
   $: ({document} = data)
 

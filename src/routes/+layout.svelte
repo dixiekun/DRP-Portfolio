@@ -7,7 +7,6 @@
   import {navigating} from '$app/stores'
   import {loading} from '$lib/stores/loading'
 
-
   let isPageLoaded = false
 
   $: $loading = !!$navigating
