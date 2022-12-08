@@ -126,7 +126,8 @@
                 width: 100%;
 
                 &::before {
-                    width: 33rem;
+                    // width: 33rem;
+                    display: none;
 
                 }
             }
@@ -172,9 +173,17 @@
 
             img {
                 width: 100%;
-                min-width: 32.063rem;
+                // min-width: 32.063rem;
             }
 
+        }
+    }
+
+    
+    @media only screen and (max-width: 1064px) {
+        article {
+            flex-wrap: wrap;
+            justify-content: center;
         }
     }
 

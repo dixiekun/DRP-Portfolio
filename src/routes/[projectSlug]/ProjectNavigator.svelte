@@ -83,4 +83,11 @@ $: ({prevIndex, nextIndex } = getPrevAndNext())
 
     }
 
+
+    @media only screen and (max-width: 600px) {
+        section.project-navigator {
+            padding: 2rem 0;
+        }
+    }
+
 </style>

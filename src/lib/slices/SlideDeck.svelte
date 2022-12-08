@@ -126,14 +126,15 @@
     }
 
     .extra-outer-wrapper {
-		width: 84%;
+		// width: 84%;
+        width: min(160ch, 100vw - 2rem);
 		margin: 0 auto;
 	}
 
     .outer-slide {
         box-sizing: border-box;
         position: relative;
-        height: calc(100vh - 9.5rem);
+        // height: calc(100vh - 9.5rem);
         margin-top: 2rem;
     }
 
@@ -141,7 +142,7 @@
         // display: grid;
         // place-items: center;
         // margin-top: 3rem;
-        position: absolute;
+        position: relative;
         display: flex;
         width: 100%;
     }
@@ -220,4 +221,44 @@
             color: white;
         }
 	}
+
+    @media only screen and (max-width: 1064px) {
+        .slide-deck {
+            flex-wrap: wrap;
+        }
+
+
+        .controls {
+        flex-direction: row;
+        gap: 2rem;
+        width: 100%;
+        justify-content: center;
+        margin-top: 2rem;
+        
+            button {
+                position: relative;
+
+                &:first-child {
+                    left: unset;
+                    top: unset;
+                }
+                
+                &:last-child {
+                    right: unset;
+                    top: unset;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        button {
+            svg {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+    }
+
+
 </style>
