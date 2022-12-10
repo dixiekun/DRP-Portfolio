@@ -5,11 +5,27 @@ import drpLogo from '../../images/Dixie-Raiz-Pacheco-Logo.svg'
 import {page} from '$app/stores'
 import {scale} from 'svelte/transition'
 
+let y= 0
+let lastY= 0
+let dY
+
+$: console.log("🚀 ~ file: Header.svelte:9 ~ y", y)
+
+function handleScroll(e) {
+        dY = y - lastY
+        lastY = y
+        if (dY < 0) {
+                return dY
+        }
+        
+}
+
 </script>
+<svelte:window bind:scrollY={y} on:scroll={handleScroll} />
 
 {#if $page.data.document.data.page_layout !== 'Contact-page'}
         {#key $page.data.document.data.page_layout}
-        <header class="main-navigation" class:fullpage-true={$page.data.document.data.page_layout === 'Full-page'}>
+        <header class="main-navigation" class:sticky-header={dY<0 && y > 64} class:fullpage-true={$page.data.document.data.page_layout === 'Full-page'}>
                 {#key $page.data.document.uid}
                         <div in:scale="{{duration: 300}}" class="container nav-bar-container" class:split={$page.data.document.uid !== 'homepage'}>
                                 <a href="/" data-sveltekit-prefetch>
@@ -22,9 +38,7 @@ import {scale} from 'svelte/transition'
         {/key}
 {/if}
 
-
-<style>
-
+<style lang="scss">
         .main-navigation {
                 padding-top: 1.25rem;
         }
@@ -47,6 +61,15 @@ import {scale} from 'svelte/transition'
                 border-bottom: 1px solid #fafafa;
                 box-shadow: 0 8px 20px #31354059;
                 padding-top: 0.5rem;
+                
+
+                &.sticky-header {
+                        transition: transform 0.3s ease-in;
+                        position: sticky;
+                        top: -4rem;
+                        box-shadow: 0 6px 8px rgb(49 53 64 / 20%);
+                        transform: translate3d(0, 4rem, 0);
+                }
 
         }
 
@@ -65,13 +88,5 @@ import {scale} from 'svelte/transition'
         a {
                 height: 100%;
         }
-
-        /* @media only screen and (max-width: 1440px) {
-                .split {
-                        max-width: 84%;
-
-                }
-        } */
-
 
 </style>

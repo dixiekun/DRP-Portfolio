@@ -11,7 +11,6 @@
     $: slideImages = slice.items
 
     $: project = $page.data.document
-    $: console.log("🚀 ~ file: SlideDeck.svelte:14 ~ project", project)
 
     $: currentPageLayout = project.data.page_layout
 
@@ -110,7 +109,7 @@
 
 {#if project.data.project_link}
     <div class="container">
-        <a class="project-link" href={project.data.project_link} target="_blank" rel="noreferrer">Click here for the project in production</a>
+        <a class="project-link" href={project.data.project_link} target="_blank" rel="noreferrer">Click here for the project live site</a>
     </div>
 {/if}
 
