@@ -11,6 +11,7 @@
     $: slideImages = slice.items
 
     $: project = $page.data.document
+    $: console.log("🚀 ~ file: SlideDeck.svelte:14 ~ project", project)
 
     $: currentPageLayout = project.data.page_layout
 
@@ -60,7 +61,7 @@
         <div class="container">
             <article>
                 {#each slideImages as slideImage, i}
-                    <img class:no-mt={slideImage.image_class} id={`image-number-${[i+1]}`} src={cleanImage(slideImage.slide_image.url)} alt={slideImage.slide_image.alt}>
+                    <img class={slideImage?.image_class ?? 'no-style'} id={`image-number-${[i+1]}`} src={cleanImage(slideImage.slide_image.url)} alt={slideImage.slide_image.alt}>
                 {/each}
             </article>
         </div>
@@ -107,6 +108,11 @@
     </div>
 {/if}
 
+{#if project.data.project_link}
+    <div class="container">
+        <a class="project-link" href={project.data.project_link} target="_blank" rel="noreferrer">Click here for the project in production</a>
+    </div>
+{/if}
 
 
 
@@ -130,7 +136,21 @@
         img:not(:first-child, .no-mt) {
             margin-top: var(--space-xl);
         }
+
+        img.w-1180 {
+            max-width: 73.75rem;
+        }
+
+        img.full-width {
+            width: 100%;
+        }
         
+    }
+
+    a.project-link {
+        display: flex;
+        margin-top: var(--space-xl);
+        font-size: var(--step-1);
     }
 
     .extra-outer-wrapper {
