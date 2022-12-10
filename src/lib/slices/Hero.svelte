@@ -57,9 +57,9 @@
                     </Typewriter>
                     <img class="swosh" src={hero_swosh} alt="swosh">
                     {:else}
-                    {@html prismicH.asHTML(slice.primary.hero_heading)}
+                    <h1>{prismicH.asText(slice.primary.hero_heading)}</h1>
                 {/if}
-                {@html prismicH.asHTML(slice.primary.hero_description)}
+                <p>{prismicH.asText(slice.primary.hero_description)}</p>
             </div>
         </div>
         {#if slice.primary.hero_type === "Image on the background"}
@@ -116,7 +116,11 @@
                     place-content: center;
                     gap: var(--space-m);
 
+                    h1 {
+                        font-size: var(--step-5);
+                    }
                 }
+
             }
 
             .text-content {

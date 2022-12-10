@@ -9,6 +9,7 @@
 
   export let data
 
+
   $: ({document, projects} = data)
 
 

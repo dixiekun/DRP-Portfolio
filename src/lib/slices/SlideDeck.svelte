@@ -60,7 +60,7 @@
         <div class="container">
             <article>
                 {#each slideImages as slideImage, i}
-                    <img id={`image number ${[i+1]}`} src={cleanImage(slideImage.slide_image.url)} alt={slideImage.slide_image.alt}>
+                    <img class:no-mt={slideImage.image_class} id={`image-number-${[i+1]}`} src={cleanImage(slideImage.slide_image.url)} alt={slideImage.slide_image.alt}>
                 {/each}
             </article>
         </div>
@@ -123,6 +123,14 @@
     article {
         display: grid;
         place-items: center;
+        background-color: white;
+        border-radius: 0.75rem;
+        overflow: hidden;
+
+        img:not(:first-child, .no-mt) {
+            margin-top: var(--space-xl);
+        }
+        
     }
 
     .extra-outer-wrapper {
