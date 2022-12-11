@@ -59,7 +59,7 @@
                     {:else}
                     <h1>{prismicH.asText(slice.primary.hero_heading)}</h1>
                 {/if}
-                <p>{prismicH.asText(slice.primary.hero_description)}</p>
+                {@html prismicH.asHTML(slice.primary.hero_description)}
             </div>
         </div>
         {#if slice.primary.hero_type === "Image on the background"}
