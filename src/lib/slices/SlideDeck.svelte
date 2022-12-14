@@ -132,6 +132,10 @@
         border-radius: 0.75rem;
         overflow: hidden;
 
+        img {
+            width: 100%;
+        }
+
         img:not(:first-child, .no-mt) {
             margin-top: var(--space-xl);
         }

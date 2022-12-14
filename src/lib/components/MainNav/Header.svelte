@@ -8,8 +8,8 @@ import {scale} from 'svelte/transition'
 let y= 0
 let lastY= 0
 let dY
-
-$: console.log("🚀 ~ file: Header.svelte:9 ~ y", y)
+let nav
+let stickyNav
 
 function handleScroll(e) {
         dY = y - lastY
@@ -17,15 +17,20 @@ function handleScroll(e) {
         if (dY < 0) {
                 return dY
         }
-        
+
+        if (nav.classList.contains('sticky-header')) {
+                stickyNav = 'sticky-header'
+        }
 }
+
+
 
 </script>
 <svelte:window bind:scrollY={y} on:scroll={handleScroll} />
 
 {#if $page.data.document.data.page_layout !== 'Contact-page'}
-        {#key $page.data.document.data.page_layout}
-        <header class="main-navigation" class:sticky-header={dY<0 && y > 64} class:fullpage-true={$page.data.document.data.page_layout === 'Full-page'}>
+        {#key $page.data.document.data.page_layout, stickyNav = 'sticky-header'}
+        <header bind:this={nav} class="main-navigation" class:sticky-header={dY<0 && y > 1100} class:fullpage-true={$page.data.document.data.page_layout === 'Full-page'}>
                 {#key $page.data.document.uid}
                         <div in:scale="{{duration: 300}}" class="container nav-bar-container" class:split={$page.data.document.uid !== 'homepage'}>
                                 <a href="/" data-sveltekit-prefetch>
