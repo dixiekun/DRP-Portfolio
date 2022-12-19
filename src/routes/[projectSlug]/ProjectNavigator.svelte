@@ -90,4 +90,11 @@ $: ({prevIndex, nextIndex } = getPrevAndNext())
         }
     }
 
+    @media only screen and (max-width: 420px) {
+        a.button-navigator {
+            font-size: 0.75rem;
+        }
+    }
+
+
 </style>
