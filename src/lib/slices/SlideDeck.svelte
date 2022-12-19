@@ -107,8 +107,14 @@
     </div>
 {/if}
 
+{#if project.data.figma_prototype}
+    <div class="container links" class:margin-top-xl={project.data.figma_prototype}>
+        <a class="figma-link" href={project.data.figma_prototype} target="_blank" rel="noreferrer">Click here for the Figma prototype</a>
+    </div>
+{/if}
+
 {#if project.data.project_link}
-    <div class="container">
+    <div class="container links" class:margin-top-xl={!project.data.figma_prototype}>
         <a class="project-link" href={project.data.project_link} target="_blank" rel="noreferrer">Click here for the project live site</a>
     </div>
 {/if}
@@ -150,10 +156,13 @@
         
     }
 
+    .margin-top-xl {
+        margin-top: var(--space-xl);
+    }
+
     a.project-link {
         display: flex;
-        margin-top: var(--space-xl);
-        font-size: var(--step-1);
+        // font-size: var(--step-1);
     }
 
     .extra-outer-wrapper {

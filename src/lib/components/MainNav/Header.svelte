@@ -3,7 +3,7 @@ import Logo from "./Logo.svelte";
 import Nav from "./Nav.svelte";
 import drpLogo from '../../images/Dixie-Raiz-Pacheco-Logo.svg'
 import {page} from '$app/stores'
-import {scale} from 'svelte/transition'
+import {fade, scale} from 'svelte/transition'
 
 let y= 0
 let lastY= 0
@@ -25,11 +25,12 @@ function handleScroll(e) {
 
 
 
+
 </script>
 <svelte:window bind:scrollY={y} on:scroll={handleScroll} />
 
 {#if $page.data.document.data.page_layout !== 'Contact-page'}
-        {#key $page.data.document.data.page_layout, stickyNav = 'sticky-header'}
+        {#key $page.data.document.data.page_layout}
         <header bind:this={nav} class="main-navigation" class:sticky-header={dY<0 && y > 1100} class:fullpage-true={$page.data.document.data.page_layout === 'Full-page'}>
                 {#key $page.data.document.uid}
                         <div in:scale="{{duration: 300}}" class="container nav-bar-container" class:split={$page.data.document.uid !== 'homepage'}>
