@@ -25,6 +25,10 @@
         padding: 0;
     }
 
+    h2 {
+        font-size: var(--step-3);
+    }
+
     li {
         list-style: none;
         width: fit-content;

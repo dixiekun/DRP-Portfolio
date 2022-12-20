@@ -5,6 +5,7 @@
     import Slide from '../components/Slide.svelte';
     import {cleanImage} from '$lib/utils/prismicImageStrip'
     import {page} from '$app/stores'
+    import {afterNavigate} from '$app/navigation'
 
     export let slice
 
@@ -46,6 +47,10 @@
             next();
         }
     }
+
+    afterNavigate(() => {
+        cur = 0;
+    })
     
 </script>
 <svelte:head>
