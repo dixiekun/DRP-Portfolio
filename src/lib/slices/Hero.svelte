@@ -7,7 +7,6 @@
     import {quintInOut} from 'svelte/easing'
     
     export let slice 
-
     let scrollY
     
   
@@ -23,7 +22,7 @@
     
     function splitToSpan(str) {
         const strArray = str.split(" ")
-        return `${strArray[0]} <span class="thin-blue">${strArray[1]}</span>`
+        return `${strArray[0]} <span class="thin-blue" aria-hidden="true">${strArray[1]}</span>`
     }
 
     const hero_text = splitToSpan(prismicH.asText(slice.primary.hero_heading))
@@ -42,20 +41,19 @@
                 <img class="hero-pic" src={hero_avatar} alt={slice.primary.hero_image.alt}>
             {/if}
             <div class="text-content">
-
                 {#if $page.data.document.uid === 'homepage'}
-                    <Typewriter data-static="Product" mode="loop" interval="60" --cursor-color="var(--primary-color)" --cursor-width="2px">
-                        <h1>
-                            <span>{@html hero_text}</span>
+                    <Typewriter mode="loop" interval="60" --cursor-color="var(--primary-color)" --cursor-width="2px">
+                        <h1 id="home-heading" aria-label={slice.primary.heading_aria_label}>
+                            <span aria-hidden="true">{@html hero_text}</span>
                             {#each slice.items as role}
-                                <span>{@html splitToSpan(role.typer_value)}</span>
+                                <span aria-hidden="true">{@html splitToSpan(role.typer_value)}</span>
                             {/each}
                         </h1>
 
         
 
                     </Typewriter>
-                    <img class="swosh" src={hero_swosh} alt="swosh">
+                    <img class="swosh" src={hero_swosh} alt="swosh" aria-hidden="true">
                     {:else}
                     <h1>{prismicH.asText(slice.primary.hero_heading)}</h1>
                 {/if}

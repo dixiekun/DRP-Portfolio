@@ -107,7 +107,7 @@
     
     <div class="dots container">
         {#each slideImages as slideImage, i}
-            <button on:click={()=>changeSlide(i)} class="dot" class:selected={cur == i}>{i+1}</button>
+            <button aria-label={`slide number ${i+1}`} on:click={()=>changeSlide(i)} class="dot" class:selected={cur == i}>{i+1}</button>
         {/each}
     </div>
 {/if}
